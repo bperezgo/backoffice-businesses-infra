@@ -1,0 +1,89 @@
+{
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:037173593944:task-definition/backoffice-backend:1",
+  "containerDefinitions": [
+      {
+          "name": "backoffice",
+          "image": "037173593944.dkr.ecr.us-east-2.amazonaws.com/backoffice",
+          "cpu": 0,
+          "portMappings": [
+              {
+                  "name": "backoffice-8080-tcp",
+                  "containerPort": 8080,
+                  "hostPort": 8080,
+                  "protocol": "tcp",
+                  "appProtocol": "http"
+              }
+          ],
+          "essential": true,
+          "environment": [
+              {
+                  "name": "SERVER_PORT",
+                  "value": "8080"
+              }
+          ],
+          "environmentFiles": [],
+          "mountPoints": [],
+          "volumesFrom": [],
+          "ulimits": [],
+          "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                  "awslogs-create-group": "true",
+                  "awslogs-group": "/ecs/backoffice-backend",
+                  "awslogs-region": "us-east-2",
+                  "awslogs-stream-prefix": "ecs"
+              },
+              "secretOptions": []
+          }
+      }
+  ],
+  "family": "backoffice-backend",
+  "executionRoleArn": "arn:aws:iam::037173593944:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 1,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+      {
+          "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+      },
+      {
+          "name": "ecs.capability.execution-role-awslogs"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.ecr-auth"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+      },
+      {
+          "name": "ecs.capability.execution-role-ecr-pull"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+      },
+      {
+          "name": "ecs.capability.task-eni"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+      }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+      "EC2",
+      "FARGATE"
+  ],
+  "requiresCompatibilities": [
+      "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024",
+  "runtimePlatform": {
+      "cpuArchitecture": "X86_64",
+      "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2023-09-24T16:41:51.062Z",
+  "registeredBy": "arn:aws:sts::037173593944:assumed-role/AWSReservedSSO_AdministratorAccess_6278eb42fefd8809/bryan.perez",
+  "tags": []
+}
